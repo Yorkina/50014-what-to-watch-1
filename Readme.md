@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Наталья Ёркина](https://up.htmlacademy.ru/react/1/user/50014).
-* Наставник: `Неизвестно`.
+* Наставник: [Николай Яшин](https://github.com/healqq).
 
 ---
 
