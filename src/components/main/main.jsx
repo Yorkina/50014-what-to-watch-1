@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const Main = (props) => {
-  const {movieTitles, genres} = props;
+  const {movieTitles, genres, onClick} = props;
 
   const movieCards = movieTitles.map((title, i) =>
     <article className="small-movie-card catalog__movies-card" key={i}>
@@ -12,7 +12,7 @@ const Main = (props) => {
         <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html" onClick={onClick}>{title}</a>
       </h3>
     </article>
   );
