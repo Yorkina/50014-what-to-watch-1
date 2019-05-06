@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 
+
 const init = () => {
   const movieTitles = [
     `Fantastic Beasts: The Crimes of Grindelwald`,
