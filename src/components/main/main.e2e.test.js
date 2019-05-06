@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()});
 
 it(`Click by header works correctly`, () => {
-  const clickHandler = jest.fn().mockReturnValueOnce(true);
+  const clickHandler = jest.fn();
 
   const main = shallow(
       <Main
