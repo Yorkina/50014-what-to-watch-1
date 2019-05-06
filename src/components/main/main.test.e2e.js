@@ -1,7 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import Main from './main.jsx';
+import Adapter from 'enzyme-adapter-react-16';
 
+
+Enzyme.configure({adapter: new Adapter()});
 
 it(`Click by header works correctly`, () => {
   const clickHandler = jest.fn();
