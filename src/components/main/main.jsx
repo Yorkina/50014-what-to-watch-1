@@ -130,7 +130,8 @@ const Main = (props) => {
 
 Main.propTypes = {
   movieTitles: PropTypes.arrayOf(PropTypes.string),
-  genres: PropTypes.arrayOf(PropTypes.string)
+  genres: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func
 };
 
 export default Main;
