@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main rendered correctly 1`] = `
+exports[`Main should render 1`] = `
 Array [
   <div
     className="visually-hidden"
@@ -275,9 +275,11 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <button
             className="small-movie-card__play-btn"
+            onClick={[Function]}
             type="button"
           >
             Play
@@ -286,7 +288,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Any movie title"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
@@ -297,9 +299,142 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="fantastic-beasts-the-crimes-of-grindelwald.html"
+              onClick={[Function]}
             >
-              Any movie title
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <button
+            className="small-movie-card__play-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            Play
+          </button>
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Bohemian Rhapsody"
+              height="175"
+              src="img/bohemian-rhapsody.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="bohemian-rhapsody.html"
+              onClick={[Function]}
+            >
+              Bohemian Rhapsody
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <button
+            className="small-movie-card__play-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            Play
+          </button>
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Johnny English"
+              height="175"
+              src="img/johnny-english.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="johnny-english.html"
+              onClick={[Function]}
+            >
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <button
+            className="small-movie-card__play-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            Play
+          </button>
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Macbeth"
+              height="175"
+              src="img/macbeth.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="macbeth.html"
+              onClick={[Function]}
+            >
+              Macbeth
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <button
+            className="small-movie-card__play-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            Play
+          </button>
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Mindhunter"
+              height="175"
+              src="img/mindhunter.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="mindhunter.html"
+              onClick={[Function]}
+            >
+              Mindhunter
             </a>
           </h3>
         </article>
