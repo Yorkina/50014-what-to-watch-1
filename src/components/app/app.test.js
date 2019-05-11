@@ -4,7 +4,7 @@ import App from './app.jsx';
 import films from '../../mocks/films.js';
 
 
-describe(`Main`, () => {
+describe(`App`, () => {
   it(`should render`, () => {
     const tree = renderer
       .create(<App

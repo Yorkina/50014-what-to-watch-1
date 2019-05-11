@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmList from './film-list.jsx';
+import FilmsList from './films-list.jsx';
 
 
-describe(`FilmList`, () => {
+describe(`FilmsList`, () => {
   it(`should render`, () => {
     const tree = renderer
-      .create(<FilmList
+      .create(<FilmsList
         films={[{
           href: `fantastic-beasts-the-crimes-of-grindelwald.html`,
           src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,

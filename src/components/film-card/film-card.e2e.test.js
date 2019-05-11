@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`All events on card works correctly`, () => {
-  it(`Title link on the card can be clicked`, () => {
+  it(`Title link should be clicked`, () => {
     const clickHandler = jest.fn();
 
     const card = mount(
@@ -23,13 +23,13 @@ describe(`All events on card works correctly`, () => {
     );
 
     const headerLink = card.find(`.small-movie-card__link`);
-    headerLink.simulate(`click`, {preventDefault() {}});
+    headerLink.simulate(`click`);
 
     expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 
 
-  it(`Сlick on the “Play” button, set an active card to callback`, () => {
+  it(`Active card should be saved`, () => {
     const clickHandler = jest.fn();
     const mock = {
       href: `mindhunter.html`,
@@ -46,7 +46,7 @@ describe(`All events on card works correctly`, () => {
     );
 
     const button = card.find(`.small-movie-card__play-btn`);
-    button.simulate(`click`, {preventDefault() {}});
+    button.simulate(`click`);
 
     expect(clickHandler).toHaveBeenCalledWith(mock);
   });

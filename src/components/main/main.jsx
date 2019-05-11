@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import FilmList from '../film-list/film-list.jsx';
+import FilmsList from '../films-list/films-list.jsx';
 
 
 const Main = (props) => {
@@ -94,7 +94,7 @@ const Main = (props) => {
         <ul className="catalog__genres-list">
           {catalogGenres}
         </ul>
-        <FilmList
+        <FilmsList
           films={films}
         />
         <div className="catalog__more">

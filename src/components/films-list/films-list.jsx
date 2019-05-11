@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
 
 
-class FilmList extends PureComponent {
+class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCard: {
-        href: ``,
-        src: ``,
-        title: ``,
-      },
+      activeCard: null,
     };
 
     this._handleMouseEnter = this._handleMouseEnter.bind(this);
@@ -48,7 +44,7 @@ class FilmList extends PureComponent {
 }
 
 
-FilmList.propTypes = {
+FilmsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     href: PropTypes.string.isRequred,
     src: PropTypes.string.isRequred,
@@ -58,4 +54,4 @@ FilmList.propTypes = {
   onMouseEnter: PropTypes.func
 };
 
-export default FilmList;
+export default FilmsList;
