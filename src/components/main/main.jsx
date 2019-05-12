@@ -1,21 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import FilmsList from '../films-list/films-list.jsx';
 
 
 const Main = (props) => {
-  const {movieTitles, genres, onClick} = props;
-
-  const movieCards = movieTitles.map((title, i) =>
-    <article className="small-movie-card catalog__movies-card" key={i}>
-      <button className="small-movie-card__play-btn" type="button">Play</button>
-      <div className="small-movie-card__image">
-        <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={title} width="280" height="175" />
-      </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html" onClick={onClick}>{title}</a>
-      </h3>
-    </article>
-  );
+  const {films, genres} = props;
 
   const catalogGenres = genres.map((genre, i) =>
     <li className={i === 0 ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`} key={i}>
@@ -105,9 +94,9 @@ const Main = (props) => {
         <ul className="catalog__genres-list">
           {catalogGenres}
         </ul>
-        <div className="catalog__movies-list">
-          {movieCards}
-        </div>
+        <FilmsList
+          films={films}
+        />
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
         </div>
@@ -129,9 +118,12 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  movieTitles: PropTypes.arrayOf(PropTypes.string),
-  genres: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func
+  films: PropTypes.arrayOf(PropTypes.shape({
+    href: PropTypes.string.isRequred,
+    src: PropTypes.string.isRequred,
+    title: PropTypes.string.isRequred,
+  })),
+  genres: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Main;

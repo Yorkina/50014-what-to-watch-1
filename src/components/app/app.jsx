@@ -2,17 +2,22 @@ import React from 'react';
 import MainScreen from '../main/main.jsx';
 import PropTypes from 'prop-types';
 
+
 const App = (props) => {
-  const {movieTitles, genres} = props;
+  const {films, genres} = props;
 
   return <MainScreen
-    movieTitles={movieTitles}
+    films={films}
     genres={genres}
   />;
 };
 
 App.propTypes = {
-  movieTitles: PropTypes.arrayOf(PropTypes.string),
+  films: PropTypes.arrayOf(PropTypes.shape({
+    href: PropTypes.string.isRequred,
+    src: PropTypes.string.isRequred,
+    title: PropTypes.string.isRequred,
+  })),
   genres: PropTypes.arrayOf(PropTypes.string)
 };
 
