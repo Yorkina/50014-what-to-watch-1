@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 
-const imageSize = {
+const playerSize = {
   WIDTH: 280,
   HEIGHT: 175,
 };
@@ -33,10 +33,10 @@ class VideoPlayer extends PureComponent {
         ref={this._videoRef}
         src={src}
         poster={preview}
+        width={playerSize.WIDTH}
+        height={playerSize.HEIGHT}
         loop
         muted
-        width={imageSize.WIDTH}
-        height={imageSize.HEIGHT}
       />
     );
   }
