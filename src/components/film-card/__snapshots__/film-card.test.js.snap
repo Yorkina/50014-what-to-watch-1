@@ -4,22 +4,17 @@ exports[`FilmCard should render 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
-  <button
-    className="small-movie-card__play-btn"
-    onClick={[Function]}
-    type="button"
-  >
-    Play
-  </button>
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Fantastic Beasts: The Crimes of Grindelwald"
-      height="175"
+    <video
+      height={175}
+      loop={true}
+      muted={true}
       src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-      width="280"
+      width={280}
     />
   </div>
   <h3
