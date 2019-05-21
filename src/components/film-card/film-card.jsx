@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
 
 
+const DELAY_TIME = 1000;
+
 class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class FilmCard extends PureComponent {
       this.setState({
         isPlaying: true,
       });
-    }, 1000);
+    }, DELAY_TIME);
   }
 
   _handleMouseLeave() {
@@ -34,6 +36,10 @@ class FilmCard extends PureComponent {
     this.setState({
       isPlaying: false,
     });
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._timerId);
   }
 
   render() {

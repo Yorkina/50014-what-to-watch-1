@@ -2,6 +2,11 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 
+const imageSize = {
+  WIDTH: 280,
+  HEIGHT: 175,
+};
+
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
@@ -22,18 +27,16 @@ class VideoPlayer extends PureComponent {
 
   render() {
     const {src, preview} = this.props;
-    const isMuted = true;
-    const isLoop = true;
 
     return (
       <video
         ref={this._videoRef}
         src={src}
         poster={preview}
-        loop={isLoop}
-        muted={isMuted}
-        width={280}
-        height={175}
+        loop
+        muted
+        width={imageSize.WIDTH}
+        height={imageSize.HEIGHT}
       />
     );
   }
