@@ -286,6 +286,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              preload="false"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
@@ -315,6 +316,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/bohemian-rhapsody.jpg"
+              preload="false"
               src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width={280}
             />
@@ -344,6 +346,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/johnny-english.jpg"
+              preload="false"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
@@ -373,6 +376,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/macbeth.jpg"
+              preload="false"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
@@ -402,6 +406,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/mindhunter.jpg"
+              preload="false"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />

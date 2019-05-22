@@ -6,6 +6,7 @@ exports[`VideoPlayer should render 1`] = `
   loop={true}
   muted={true}
   poster="img/macbeth.jpg"
+  preload="false"
   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
   width={280}
 />

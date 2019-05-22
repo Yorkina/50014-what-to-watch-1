@@ -37,6 +37,7 @@ class VideoPlayer extends PureComponent {
         height={playerSize.HEIGHT}
         loop
         muted
+        preload={`false`}
       />
     );
   }

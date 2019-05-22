@@ -16,6 +16,7 @@ exports[`FilmsList should render 1`] = `
         height={175}
         loop={true}
         muted={true}
+        preload="false"
         src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width={280}
       />
