@@ -19,7 +19,7 @@ class VideoPlayer extends PureComponent {
     const {isPlaying} = this.props;
 
     if (isPlaying) {
-      video.play();
+      video.play().catch(() => {});
     } else {
       video.load();
     }
@@ -37,7 +37,6 @@ class VideoPlayer extends PureComponent {
         height={playerSize.HEIGHT}
         loop
         muted
-        preload={`false`}
       />
     );
   }
