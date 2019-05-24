@@ -1,27 +1,32 @@
 const films = [
   {
     href: `fantastic-beasts-the-crimes-of-grindelwald.html`,
-    src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    preview: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
   },
   {
     href: `bohemian-rhapsody.html`,
-    src: `img/bohemian-rhapsody.jpg`,
+    src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    preview: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
   },
   {
     href: `johnny-english.html`,
-    src: `img/johnny-english.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    preview: `img/johnny-english.jpg`,
     title: `Johnny English`,
   },
   {
     href: `macbeth.html`,
-    src: `img/macbeth.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    preview: `img/macbeth.jpg`,
     title: `Macbeth`,
   },
   {
     href: `mindhunter.html`,
-    src: `img/mindhunter.jpg`,
+    src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    preview: `img/mindhunter.jpg`,
     title: `Mindhunter`,
   },
 ];

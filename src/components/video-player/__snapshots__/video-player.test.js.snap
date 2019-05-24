@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer should render 1`] = `
+<video
+  height={175}
+  loop={true}
+  muted={true}
+  poster="img/macbeth.jpg"
+  preload="false"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  width={280}
+/>
+`;

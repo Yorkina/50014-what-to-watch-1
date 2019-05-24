@@ -31,6 +31,8 @@ describe(`All events on card works correctly`, () => {
 
   it(`Active card should be saved`, () => {
     const clickHandler = jest.fn();
+    const onMouseEnter = jest.fn();
+
     const mock = {
       href: `mindhunter.html`,
       src: `img/mindhunter.jpg`,
@@ -40,14 +42,13 @@ describe(`All events on card works correctly`, () => {
     const card = mount(
       <FilmCard
         card={mock}
-        onMouseEnter={jest.fn()}
+        onMouseEnter={onMouseEnter}
         onClick={clickHandler}
       />
     );
 
-    const button = card.find(`.small-movie-card__play-btn`);
-    button.simulate(`click`);
+    card.simulate(`mouseEnter`);
 
-    expect(clickHandler).toHaveBeenCalledWith(mock);
+    expect(onMouseEnter).toHaveBeenCalledWith(mock);
   });
 });
