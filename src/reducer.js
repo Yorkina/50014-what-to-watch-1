@@ -13,9 +13,9 @@ const reducer = (state = initialState, action) => {
       });
 
     case `GET_FILTERED_FILMS`:
-      return Object.assign({}, state, {
+      return { ...state, ...{
         films: [...payload],
-      });
+      }};
   }
 
   return state;

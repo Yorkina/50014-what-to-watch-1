@@ -42,9 +42,12 @@ export const FiltersList = (props) => {
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     properties:
-      state.films
-        .map((film) => film.genre)
-        .filter((genre, ind, arr) => arr.indexOf(genre) === ind),
+      state.films.reduce((accum, film) => {
+        if (accum.indexOf(film.genre) === -1) {
+          accum.push(film.genre);
+        }
+        return accum;
+      }, []),
     currentFilter: state.currentFilter,
   });
 };
