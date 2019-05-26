@@ -1,17 +1,10 @@
 import React from "react";
-import PropTypes from 'prop-types';
+
 import FilmsList from '../films-list/films-list.jsx';
+import FiltersList from '../filters-list/filters-list.jsx';
 
 
-const Main = (props) => {
-  const {films, genres} = props;
-
-  const catalogGenres = genres.map((genre, i) =>
-    <li className={i === 0 ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`} key={i}>
-      <a href="#" className="catalog__genres-link">{genre}</a>
-    </li>
-  );
-
+const Main = () => {
   return <React.Fragment>
     <div className="visually-hidden">
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -91,12 +84,8 @@ const Main = (props) => {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <ul className="catalog__genres-list">
-          {catalogGenres}
-        </ul>
-        <FilmsList
-          films={films}
-        />
+        <FiltersList/>
+        <FilmsList/>
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
         </div>
@@ -115,15 +104,6 @@ const Main = (props) => {
       </footer>
     </div>;
   </React.Fragment>;
-};
-
-Main.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    href: PropTypes.string.isRequred,
-    src: PropTypes.string.isRequred,
-    title: PropTypes.string.isRequred,
-  })),
-  genres: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Main;
