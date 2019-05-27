@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmsList from './films-list.jsx';
+import {FilmsList} from './films-list.jsx';
 
 
 describe(`FilmsList`, () => {

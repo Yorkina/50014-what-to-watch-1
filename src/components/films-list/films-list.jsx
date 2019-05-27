@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
 import FilmCard from '../film-card/film-card.jsx';
 
 
-class FilmsList extends PureComponent {
+export class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -43,6 +45,21 @@ class FilmsList extends PureComponent {
   }
 }
 
+const filterFilms = (state) => {
+  const {films, currentFilter} = state;
+
+  if (currentFilter === `All Genre`) {
+    return films;
+  }
+
+  return films.filter(({genre}) => genre === currentFilter);
+};
+
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  films: filterFilms(state),
+});
+
+export default connect(mapStateToProps)(FilmsList);
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -53,5 +70,3 @@ FilmsList.propTypes = {
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func
 };
-
-export default FilmsList;
