@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import FilmCard from '../film-card/film-card.jsx';
+import withActiveCard from '../../hocs/with-active-card/with-active-card.js';
 
+
+const WrappedActiveCard = withActiveCard(FilmCard);
 
 export const FilmsList = (props) => {
   const {films} = props;
@@ -12,7 +15,7 @@ export const FilmsList = (props) => {
     <div
       className="catalog__movies-list"
     >
-      {films.map((film, ind) => <FilmCard
+      {films.map((film, ind) => <WrappedActiveCard
         key={ind}
         card={film}
       />)}

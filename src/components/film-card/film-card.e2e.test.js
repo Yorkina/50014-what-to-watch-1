@@ -11,14 +11,19 @@ describe(`All events on card works correctly`, () => {
   it(`Title link should be clicked`, () => {
     const onClick = jest.fn();
 
-    FilmCard.prototype._handleTitleClick = onClick;
+    const mock = {
+      href: `mindhunter.html`,
+      src: `img/mindhunter.jpg`,
+      title: `Mindhunter`,
+    }
+
     const card = mount(
       <FilmCard
-        card={{
-          href: `macbeth.html`,
-          src: `img/macbeth.jpg`,
-          title: `Macbeth`,
-        }}
+        card={mock}
+        isPlaying={false}
+        onTitleClick={onClick}
+        onMouseEnter={jest.fn()}
+        onMouseLeave={jest.fn()}
       />
     );
 
@@ -26,6 +31,30 @@ describe(`All events on card works correctly`, () => {
     headerLink.simulate(`click`);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it(`Card should trigger mouseLeave event correctly`, () => {
+    const onMouseLeave = jest.fn();
+
+    const mock = {
+      href: `mindhunter.html`,
+      src: `img/mindhunter.jpg`,
+      title: `Mindhunter`,
+    }
+
+    const card = mount(
+      <FilmCard
+        card={mock}
+        isPlaying={false}
+        onTitleClick={jest.fn()}
+        onMouseEnter={jest.fn()}
+        onMouseLeave={onMouseLeave}
+      />
+    );
+
+    card.simulate(`mouseLeave`);
+
+    expect(onMouseLeave).toHaveBeenCalledTimes(1);
   });
 
 
@@ -38,10 +67,13 @@ describe(`All events on card works correctly`, () => {
       title: `Mindhunter`,
     }
 
-    FilmCard.prototype._handleMouseEnter = onMouseEnter;
     const card = mount(
       <FilmCard
         card={mock}
+        isPlaying={false}
+        onTitleClick={jest.fn()}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={jest.fn()}
       />
     );
 

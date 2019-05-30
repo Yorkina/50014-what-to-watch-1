@@ -6,24 +6,16 @@ import {compose} from 'recompose';
 
 import {actionCreator} from '../../reducer';
 
-export const withActiveItem = (Component, defaultItem) => {
+export const withActiveItem = (Component) => {
   class WithActiveItem extends PureComponent {
     constructor(props) {
       super(props);
-
-      this.state = {
-        activeItem: this.props.activeItem || defaultItem,
-      };
     }
 
     render() {
       return <Component {...this.props} />;
     }
   }
-
-  WithActiveItem.propTypes = {
-    activeItem: PropTypes.string,
-  };
 
   return WithActiveItem;
 };
