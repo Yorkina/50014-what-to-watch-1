@@ -10,7 +10,10 @@ import films from './mocks/films.js';
 
 
 const init = () => {
-  const appStore = createStore(reducer);
+  const appStore = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()// eslint-disable-line
+  );
 
   appStore.dispatch(actionCreator.getFilteredFilms(films));
 

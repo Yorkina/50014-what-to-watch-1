@@ -11,7 +11,7 @@ describe(`FiltersList`, () => {
     const onClick = jest.fn();
     const props = {
       properties: [`Comedies`, `Dramas`, `Crime`],
-      currentFilter: `Comedies`,
+      activeItem: `Comedies`,
       changeFilter: onClick,
     };
 

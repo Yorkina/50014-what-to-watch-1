@@ -1,15 +1,17 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
-import FilmCard from './film-card.jsx';
 import Adapter from 'enzyme-adapter-react-16';
+
+import FilmCard from './film-card.jsx';
 
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`All events on card works correctly`, () => {
   it(`Title link should be clicked`, () => {
-    const clickHandler = jest.fn();
+    const onClick = jest.fn();
 
+    FilmCard.prototype._handleTitleClick = onClick;
     const card = mount(
       <FilmCard
         card={{
@@ -17,20 +19,17 @@ describe(`All events on card works correctly`, () => {
           src: `img/macbeth.jpg`,
           title: `Macbeth`,
         }}
-        onMouseEnter={jest.fn()}
-        onClick={clickHandler}
       />
     );
 
     const headerLink = card.find(`.small-movie-card__link`);
     headerLink.simulate(`click`);
 
-    expect(clickHandler).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
 
-  it(`Active card should be saved`, () => {
-    const clickHandler = jest.fn();
+  it(`Card should trigger mouseEnter event correctly`, () => {
     const onMouseEnter = jest.fn();
 
     const mock = {
@@ -39,16 +38,15 @@ describe(`All events on card works correctly`, () => {
       title: `Mindhunter`,
     }
 
+    FilmCard.prototype._handleMouseEnter = onMouseEnter;
     const card = mount(
       <FilmCard
         card={mock}
-        onMouseEnter={onMouseEnter}
-        onClick={clickHandler}
       />
     );
 
     card.simulate(`mouseEnter`);
 
-    expect(onMouseEnter).toHaveBeenCalledWith(mock);
+    expect(onMouseEnter).toHaveBeenCalledTimes(1);
   });
 });

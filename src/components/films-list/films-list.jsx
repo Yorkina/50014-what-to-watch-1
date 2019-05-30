@@ -1,58 +1,33 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import FilmCard from '../film-card/film-card.jsx';
 
 
-export class FilmsList extends PureComponent {
-  constructor(props) {
-    super(props);
+export const FilmsList = (props) => {
+  const {films} = props;
 
-    this.state = {
-      activeCard: null,
-    };
-
-    this._handleMouseEnter = this._handleMouseEnter.bind(this);
-    this._handleClick = this._handleClick.bind(this);
-  }
-
-  _handleMouseEnter(card) {
-    this.setState({
-      activeCard: card
-    });
-  }
-
-  _handleClick(card) {
-    return card;
-  }
-
-  render() {
-    const {films} = this.props;
-
-    const itemsList = films.map((item, i) => {
-      return <FilmCard
-        card={item}
-        onMouseEnter={this._handleMouseEnter}
-        onClick={this._handleClick}
-        key={i}
-      />;
-    });
-
-    return <div className="catalog__movies-list">
-      {itemsList}
-    </div>;
-  }
-}
+  return (
+    <div
+      className="catalog__movies-list"
+    >
+      {films.map((film, ind) => <FilmCard
+        key={ind}
+        card={film}
+      />)}
+    </div>
+  );
+};
 
 const filterFilms = (state) => {
-  const {films, currentFilter} = state;
+  const {films, activeItem} = state;
 
-  if (currentFilter === `All Genre`) {
+  if (activeItem === `All Genre`) {
     return films;
   }
 
-  return films.filter(({genre}) => genre === currentFilter);
+  return films.filter(({genre}) => genre === activeItem);
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
@@ -66,7 +41,5 @@ FilmsList.propTypes = {
     href: PropTypes.string.isRequred,
     src: PropTypes.string.isRequred,
     title: PropTypes.string.isRequred,
-  })),
-  onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func
+  }))
 };

@@ -52,27 +52,27 @@ describe(`Action creator`, () => {
 describe(`Reducer`, () => {
   it(`Return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
-      currentFilter: `All Genre`,
+      activeItem: `All Genre`,
       films: [],
     });
   });
 
   it(`Change filter in state`, () => {
     expect(reducer({
-      currentFilter: `All Genre`,
+      activeItem: `All Genre`,
       films: [],
     }, {
       type: `CHANGE_GENRE`,
       payload: `Dramas`,
     })).toEqual({
-      currentFilter: `Dramas`,
+      activeItem: `Dramas`,
       films: [],
     });
   });
 
   it(`Change films in state`, () => {
     expect(reducer({
-      currentFilter: `All Genre`,
+      activeItem: `All Genre`,
       films: [],
     }, {
       type: `GET_FILTERED_FILMS`,
@@ -93,7 +93,7 @@ describe(`Reducer`, () => {
         },
       ],
     })).toEqual({
-      currentFilter: `All Genre`,
+      activeItem: `All Genre`,
       films: [
         {
           genre: `Crime`,

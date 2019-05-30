@@ -17,17 +17,19 @@ class FilmCard extends PureComponent {
 
     this._handleMouseEnter = this._handleMouseEnter.bind(this);
     this._handleMouseLeave = this._handleMouseLeave.bind(this);
+    this._handleTitleClick = this._handleTitleClick.bind(this);
   }
 
   _handleMouseEnter() {
-    const {card, onMouseEnter} = this.props;
-    onMouseEnter(card);
-
     this._timerId = setTimeout(() => {
       this.setState({
         isPlaying: true,
       });
     }, DELAY_TIME);
+  }
+
+  _handleTitleClick() {
+    return;
   }
 
   _handleMouseLeave() {
@@ -43,7 +45,7 @@ class FilmCard extends PureComponent {
   }
 
   render() {
-    const {card, onClick} = this.props;
+    const {card} = this.props;
     const {isPlaying} = this.state;
 
     return <article
@@ -58,7 +60,7 @@ class FilmCard extends PureComponent {
         />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href={card.href} onClick={() => onClick(card)}>{card.title}</a>
+        <a className="small-movie-card__link" onClick={this._handleTitleClick} href={card.href}>{card.title}</a>
       </h3>
     </article>;
   }
@@ -70,9 +72,7 @@ FilmCard.propTypes = {
     preview: PropTypes.string.isRequred,
     src: PropTypes.string.isRequred,
     title: PropTypes.string.isRequred,
-  }),
-  onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
+  })
 };
 
 export default FilmCard;

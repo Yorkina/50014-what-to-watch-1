@@ -1,8 +1,11 @@
 import React from "react";
 
 import FilmsList from '../films-list/films-list.jsx';
-import FiltersList from '../filters-list/filters-list.jsx';
+import {FiltersList} from '../filters-list/filters-list.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
+
+const WrappedFiltersList = withActiveItem(FiltersList);
 
 const Main = () => {
   return <React.Fragment>
@@ -84,7 +87,7 @@ const Main = () => {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <FiltersList/>
+        <WrappedFiltersList/>
         <FilmsList/>
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
