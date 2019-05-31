@@ -11,7 +11,7 @@ describe(`Main`, () => {
   it(`should render`, () => {
 
     const initialMockState = {
-      currentFilter: `All Genre`,
+      activeItem: `All Genre`,
       films: films,
     };
 

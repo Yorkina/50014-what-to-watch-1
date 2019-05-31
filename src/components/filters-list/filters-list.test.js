@@ -7,7 +7,7 @@ describe(`FiltersList`, () => {
   it(`should render`, () => {
     const props = {
       properties: [`Comedies`, `Dramas`, `Crime`],
-      currentFilter: `Comedies`,
+      activeItem: `Comedies`,
       changeFilter: jest.fn(),
     };
 

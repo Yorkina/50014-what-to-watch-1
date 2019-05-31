@@ -1,5 +1,5 @@
 const initialState = {
-  currentFilter: `All Genre`,
+  activeItem: `All Genre`,
   films: [],
 };
 
@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case `CHANGE_GENRE`:
       return Object.assign({}, state, {
-        currentFilter: payload,
+        activeItem: payload,
       });
 
     case `GET_FILTERED_FILMS`:
