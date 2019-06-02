@@ -25,6 +25,7 @@ const composeEnhancers =
     applyMiddleware(thunk.withExtraArgument(api))
   );
 
+  const appStore = createStore(combineReducers, enhancer);
   appStore.dispatch(Operation.loadFilms());
 
   ReactDOM.render(
