@@ -62,8 +62,8 @@ export const withActiveCard = (Component) => {
     card: PropTypes.shape({
       href: PropTypes.string.isRequred,
       preview: PropTypes.string.isRequred,
-      src: PropTypes.string.isRequred,
-      title: PropTypes.string.isRequred,
+      previewImageSrc: PropTypes.string.isRequred,
+      name: PropTypes.string.isRequred,
     })
   };
 

@@ -23,7 +23,7 @@ exports[`FiltersList should render 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Comedies
+      Comedy
     </a>
   </li>
   <li
@@ -34,7 +34,7 @@ exports[`FiltersList should render 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Dramas
+      Drama
     </a>
   </li>
   <li

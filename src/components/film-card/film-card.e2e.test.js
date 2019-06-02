@@ -13,8 +13,9 @@ describe(`All events on card works correctly`, () => {
 
     const mock = {
       href: `mindhunter.html`,
-      src: `img/mindhunter.jpg`,
-      title: `Mindhunter`,
+      previewImageSrc: `img/mindhunter.jpg`,
+      previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      name: `Mindhunter`,
     }
 
     const card = mount(
@@ -38,8 +39,9 @@ describe(`All events on card works correctly`, () => {
 
     const mock = {
       href: `mindhunter.html`,
-      src: `img/mindhunter.jpg`,
-      title: `Mindhunter`,
+      previewImageSrc: `img/mindhunter.jpg`,
+      previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      name: `Mindhunter`,
     }
 
     const card = mount(
@@ -63,8 +65,9 @@ describe(`All events on card works correctly`, () => {
 
     const mock = {
       href: `mindhunter.html`,
-      src: `img/mindhunter.jpg`,
-      title: `Mindhunter`,
+      previewImageSrc: `img/mindhunter.jpg`,
+      previewVideoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      name: `Mindhunter`,
     }
 
     const card = mount(

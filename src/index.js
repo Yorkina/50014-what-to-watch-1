@@ -1,21 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import {reducer} from "./reducer";
-import {actionCreator} from "./reducer";
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import {compose} from 'recompose';
+import thunk from 'redux-thunk';
+import {createAPI} from './api';
+
+import combineReducers from './reducer/index.js';
+import {Operation} from './reducer/films/films';
 
 import App from './components/app/app.jsx';
-import films from './mocks/films.js';
-
 
 const init = () => {
+  const api = createAPI((...args) => appStore.dispatch(...args));
+
   const appStore = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()// eslint-disable-line
+      combineReducers,
+      compose(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        window[`__REDUX_DEVTOOLS_EXTENSION__`] && window[`__REDUX_DEVTOOLS_EXTENSION__`]()
+    )
   );
 
-  appStore.dispatch(actionCreator.getFilteredFilms(films));
+  appStore.dispatch(Operation.loadFilms());
 
   ReactDOM.render(
     (<Provider store={appStore}>
