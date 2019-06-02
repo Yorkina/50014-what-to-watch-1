@@ -15,8 +15,8 @@ describe(`WithActiveCard`, () => {
     const onMouseEnter = jest.fn();
     const mock = {
       href: `mindhunter.html`,
-      src: `img/mindhunter.jpg`,
-      title: `Mindhunter`,
+      previewImageSrc: `img/mindhunter.jpg`,
+      name: `Mindhunter`,
     }
 
     const card = mount(
@@ -42,8 +42,8 @@ describe(`WithActiveCard`, () => {
     const onMouseLeave = jest.fn();
     const mock = {
       href: `mindhunter.html`,
-      src: `img/mindhunter.jpg`,
-      title: `Mindhunter`,
+      previewImageSrc: `img/mindhunter.jpg`,
+      name: `Mindhunter`,
     }
 
     const card = mount(

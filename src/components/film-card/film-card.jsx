@@ -12,13 +12,13 @@ export const FilmCard = (props) => {
     onMouseLeave={onMouseLeave}>
     <div className="small-movie-card__image">
       <VideoPlayer
-        src={card.src}
-        preview={card.preview}
+        src={card.previewVideoSrc}
+        preview={card.previewImageSrc}
         isPlaying={isPlaying}
       />
     </div>
     <h3 className="small-movie-card__title">
-      <a className="small-movie-card__link" onClick={onTitleClick} href={card.href}>{card.title}</a>
+      <a className="small-movie-card__link" onClick={onTitleClick} href={card.href}>{card.name}</a>
     </h3>
   </article>;
 };
@@ -26,10 +26,22 @@ export const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   card: PropTypes.shape({
-    href: PropTypes.string.isRequred,
-    preview: PropTypes.string.isRequred,
-    src: PropTypes.string.isRequred,
-    title: PropTypes.string.isRequred,
+    name: PropTypes.string.isRequired,
+    posterImageSrc: PropTypes.string,
+    previewImageSrc: PropTypes.string,
+    backgroundImageSrc: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    scores: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    genre: PropTypes.string,
+    releasedYear: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoSrc: PropTypes.string,
+    previewVideoSrc: PropTypes.string,
   }),
   isPlaying: PropTypes.bool,
   onTitleClick: PropTypes.func,

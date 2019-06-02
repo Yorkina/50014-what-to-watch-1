@@ -6,8 +6,8 @@ import {FiltersList} from './filters-list.jsx';
 describe(`FiltersList`, () => {
   it(`should render`, () => {
     const props = {
-      properties: [`Comedies`, `Dramas`, `Crime`],
-      activeItem: `Comedies`,
+      properties: [`Comedy`, `Drama`, `Crime`],
+      activeItem: `Comedy`,
       changeFilter: jest.fn(),
     };
 

@@ -4,21 +4,15 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import App from './app.jsx';
-import films from '../../mocks/films.js';
+import filmsMock from '../../mocks/films.js';
 
 
 describe(`App`, () => {
   it(`should render`, () => {
-
-    const initialMockState = {
-      activeItem: `All Genre`,
-      films: films,
-    };
-
     const mockStore = configureStore();
 
     const tree = renderer.create(
-      <Provider store={mockStore(initialMockState)}>
+      <Provider store={mockStore(filmsMock)}>
         <App />
       </Provider>).toJSON();
 

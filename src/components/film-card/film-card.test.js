@@ -9,8 +9,8 @@ describe(`FilmCard`, () => {
       .create(<FilmCard
         card={{
           href: `fantastic-beasts-the-crimes-of-grindelwald.html`,
-          src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-          title: `Fantastic Beasts: The Crimes of Grindelwald`,
+          previewImageSrc: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+          name: `Fantastic Beasts: The Crimes of Grindelwald`,
         }}
         onMouseEnter={jest.fn()}
         onClick={jest.fn()}
