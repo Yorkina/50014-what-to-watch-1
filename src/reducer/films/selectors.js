@@ -3,10 +3,10 @@ import {createSelector} from 'reselect';
 import {NameSpace} from '../name-space';
 import {getCurrentFilter} from '../filters/selectors';
 
-const NAME_SPACE = NameSpace.FILMS;
+const NAMESPACE = NameSpace.FILMS;
 
 export const getFilmsGenres = (state) => {
-  return state[NAME_SPACE].films.reduce(
+  return state[NAMESPACE].films.reduce(
     (accum, film) => {
       if (accum.indexOf(film.genre) === -1) {
         accum.push(film.genre);
@@ -16,7 +16,7 @@ export const getFilmsGenres = (state) => {
     }, []);
 };
 
-export const getFilms = (state) => state[NAME_SPACE].films;
+export const getFilms = (state) => state[NAMESPACE].films;
 
 export const getFilteredFilms = createSelector(
     getFilms,

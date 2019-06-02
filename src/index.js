@@ -12,14 +12,17 @@ import {Operation} from './reducer/films/films';
 import App from './components/app/app.jsx';
 
 const init = () => {
-  const api = createAPI((...args) => appStore.dispatch(...args));
+  const api = createAPI((...args) => store.dispatch(...args));
 
-  const appStore = createStore(
-      combineReducers,
-      compose(
-        applyMiddleware(thunk.withExtraArgument(api)),
-        window[`__REDUX_DEVTOOLS_EXTENSION__`] && window[`__REDUX_DEVTOOLS_EXTENSION__`]()
-    )
+const composeEnhancers =
+  typeof window === `object`
+    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+
+  const enhancer = composeEnhancers(
+    applyMiddleware(thunk.withExtraArgument(api))
   );
 
   appStore.dispatch(Operation.loadFilms());
