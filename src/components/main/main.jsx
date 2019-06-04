@@ -1,13 +1,19 @@
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import FilmsList from '../films-list/films-list.jsx';
 import {FiltersList} from '../filters-list/filters-list.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import {checkIsAuthorizationRequired, getUserAvatarSrc} from '../../reducer/user/selectors';
+import {ActionCreator} from '../../reducer/user/user';
 
 
 const WrappedFiltersList = withActiveItem(FiltersList);
 
-const Main = () => {
+const Main = (props) => {
+  const {isAuthorizationRequired, showSignInPage, userAvatarSrc} = props;
+
   return <React.Fragment>
     <div className="visually-hidden">
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -50,9 +56,17 @@ const Main = () => {
           </a>
         </div>
         <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
+          {isAuthorizationRequired ? (
+            <a
+              className="logo__link"
+              href={`#`}
+              onClick={() => showSignInPage()}
+            >Sign in</a>
+          ) : (
+            <div className="user-block__avatar">
+              <img src={userAvatarSrc} alt="User avatar" width="63" height="63"/>
+            </div>
+          )}
         </div>
       </header>
       <div className="movie-card__wrap">
@@ -109,4 +123,19 @@ const Main = () => {
   </React.Fragment>;
 };
 
-export default Main;
+Main.propTypes = {
+  isAuthorizationRequired: PropTypes.bool.isRequired,
+  userAvatarSrc: PropTypes.string,
+  showSignInPage: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthorizationRequired: checkIsAuthorizationRequired(state),
+  userAvatarSrc: getUserAvatarSrc(state),
+});
+
+const mapDispatchToProps = {
+  showSignInPage: ActionCreator.showSignInPage,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

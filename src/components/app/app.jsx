@@ -1,9 +1,29 @@
 import React from 'react';
-import MainScreen from '../main/main.jsx';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
+import Main from '../main/main.jsx';
+import {checkSignInVisibility} from '../../reducer/user/selectors';
+import SignIn from '../sign-in/sign-in.jsx';
 
-const App = () => {
-  return <MainScreen/>;
+export const App = (props) => {
+  const {isSignInPage} = props;
+
+  if (isSignInPage) {
+    return <SignIn />;
+  }
+
+  return (
+    <Main />
+  );
 };
 
-export default App;
+App.propTypes = {
+  isSignInPage: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isSignInPage: checkSignInVisibility(state),
+});
+
+export default connect(mapStateToProps)(App);
