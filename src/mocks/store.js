@@ -1,4 +1,4 @@
-const filmsMock = {
+const store = {
   FILTER: {
     activeItem: `All Genre`,
   },
@@ -40,7 +40,15 @@ const filmsMock = {
         name: `Mindhunter`,
       },
     ]
+  },
+  USER: {
+    id: null,
+    name: null,
+    email: null,
+    avatarSrc: null,
+    isSignInPage: false,
+    isAuthorizationRequired: true,
   }
 };
 
-export default filmsMock;
+export default store;

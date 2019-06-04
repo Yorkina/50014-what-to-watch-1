@@ -4,18 +4,22 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 
 import App from './app.jsx';
-import filmsMock from '../../mocks/films.js';
+import store from '../../mocks/store.js';
 
 
 describe(`App`, () => {
   it(`should render`, () => {
-    const mockStore = configureStore();
+    const props = {
+      isSignInPage: true,
+    }
 
+    const mockStore = configureStore();
     const tree = renderer.create(
-      <Provider store={mockStore(filmsMock)}>
-        <App />
+      <Provider store={mockStore(store)}>
+        <App {...props}/>
       </Provider>).toJSON();
 
     expect(tree).toMatchSnapshot();
+    return undefined;
   });
 });

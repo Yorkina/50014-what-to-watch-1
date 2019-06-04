@@ -2,20 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import MainScreen from '../main/main.jsx';
-import {getIsSignInPage} from '../../reducer/user/selectors';
+import Main from '../main/main.jsx';
+import {checkSignInVisibility} from '../../reducer/user/selectors';
 import SignIn from '../sign-in/sign-in.jsx';
 
 export const App = (props) => {
   const {isSignInPage} = props;
 
-  if (true {
+  if (isSignInPage) {
     return <SignIn />;
   }
 
-  // return (
-  //   <MainPage />
-  // );
+  return (
+    <Main />
+  );
 };
 
 App.propTypes = {
@@ -23,13 +23,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isSignInPage: getIsSignInPage(state),
+  isSignInPage: checkSignInVisibility(state),
 });
 
 export default connect(mapStateToProps)(App);
-
-const App = () => {
-  return <MainScreen/>;
-};
-
-export default App;

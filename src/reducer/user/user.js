@@ -1,9 +1,17 @@
 const initialState = {
-  isAuthorizationRequired: false
+  id: null,
+  name: null,
+  email: null,
+  avatarSrc: null,
+  isSignInPage: false,
+  isAuthorizationRequired: true,
 };
 
 export const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  LOGIN: `LOGIN`,
+  SHOW_SIGN_IN_PAGE: `SHOW_SIGN_IN_PAGE`,
+  HIDE_SIGN_IN_PAGE: `HIDE_SIGN_IN_PAGE`,
 };
 
 export const ActionCreator = {
@@ -11,14 +19,36 @@ export const ActionCreator = {
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,
   }),
+
+  login: (userData) => {
+    return {
+      type: ActionType.LOGIN,
+      payload: userData,
+    };
+  },
+
+  showSignInPage: () => {
+    return {
+      type: ActionType.SHOW_SIGN_IN_PAGE,
+    };
+  },
+
+  hideSignInPage: () => {
+    return {
+      type: ActionType.HIDE_SIGN_IN_PAGE,
+    };
+  },
 };
 
 export const Operation = {
-  loadFilms: () => (dispatch, _getState, api) =>
-    api.get(`/login`)
-      .then((response) => dispatch(
-        ActionCreator.requireAuthorization(response.data)
-      )),
+  login: (email, password) => (dispatch, _getState, api) => {
+    return api.post(`/login`, {
+      email,
+      password,
+    }).then((response) => {
+      dispatch(ActionCreator.login(response.data));
+    });
+  },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -28,6 +58,25 @@ export const reducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
         isAuthorizationRequired: payload,
+      });
+
+    case ActionType.LOGIN:
+      return Object.assign({}, state, {
+        id: payload.id,
+        name: payload.name,
+        email: payload.email,
+        avatarSrc: payload[`avatar_url`],
+        isAuthorizationRequired: false,
+      });
+
+    case ActionType.SHOW_SIGN_IN_PAGE:
+      return Object.assign({}, state, {
+        isSignInPage: true,
+      });
+
+    case ActionType.HIDE_SIGN_IN_PAGE:
+      return Object.assign({}, state, {
+        isSignInPage: false,
       });
   }
 

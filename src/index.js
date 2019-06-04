@@ -26,6 +26,7 @@ const composeEnhancers =
   );
 
   const appStore = createStore(combineReducers, enhancer);
+  console.log(appStore);
   appStore.dispatch(Operation.loadFilms());
 
   ReactDOM.render(

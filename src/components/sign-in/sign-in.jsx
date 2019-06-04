@@ -1,15 +1,39 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import {ActionCreator, Operation} from '../../reducer/user/user';
 
 
-class SignIn extends PureComponent {
+export class SignIn extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: null,
-      password: null,
-    }
+      email: ``,
+      password: ``,
+    };
+
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleInputChange = this._handleInputChange.bind(this);
+  }
+
+  _handleInputChange(evt) {
+    const {value, name} = evt.target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  _handleFormSubmit(evt) {
+    evt.preventDefault();
+
+    const {email, password} = this.state;
+    const {login, hideSignInPage} = this.props;
+
+    login(email, password);
+    hideSignInPage();
   }
 
   render() {
@@ -57,7 +81,7 @@ class SignIn extends PureComponent {
           </header>
 
           <div className="sign-in user-page__content">
-            <form action="#" className="sign-in__form" onSubmit={this._submitHandle}>
+            <form action="#" className="sign-in__form" onSubmit={this._handleFormSubmit}>
               <div className="sign-in__fields">
                 <div className="sign-in__field">
                   <input
@@ -68,7 +92,7 @@ class SignIn extends PureComponent {
                     id="email"
                     required
                     value={email}
-                    onChange={this._inputChangeHandle}
+                    onChange={this._handleInputChange}
                   />
                   <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
                 </div>
@@ -81,7 +105,7 @@ class SignIn extends PureComponent {
                     id="password"
                     required
                     value={password}
-                    onChange={this._inputChangeHandle}
+                    onChange={this._handleInputChange}
                   />
                   <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
                 </div>
@@ -112,9 +136,13 @@ class SignIn extends PureComponent {
 }
 
 SignIn.propTypes = {
-  src: PropTypes.string,
-  preview: PropTypes.string,
-  isPlaying: PropTypes.bool,
+  login: PropTypes.func.isRequired,
+  hideSignInPage: PropTypes.func.isRequired,
 };
 
-export default SignIn;
+const mapDispatchToProps = {
+  login: Operation.login,
+  hideSignInPage: ActionCreator.hideSignInPage,
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);
