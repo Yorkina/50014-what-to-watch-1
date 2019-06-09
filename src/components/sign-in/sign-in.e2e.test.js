@@ -1,5 +1,5 @@
 import React from 'react'
-import Enzyme, {mount} from 'enzyme';
+import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {SignIn} from './sign-in.jsx';
@@ -69,7 +69,7 @@ describe(`SignIn events works correctly`, () => {
   });
 
   it(`submit event work correctly on form`, () => {
-    const login = jest.fn();
+    const login = jest.fn().mockReturnValue(Promise.resolve());
     const eventPreventDefault = jest.fn();
 
     const props = {
@@ -81,7 +81,7 @@ describe(`SignIn events works correctly`, () => {
       },
     };
 
-    const signIn = mount(<SignIn {...props} />);
+    const signIn = shallow(<SignIn {...props} />);
     const form = signIn.find(`form`);
 
     signIn.setState({
