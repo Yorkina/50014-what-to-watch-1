@@ -59,7 +59,7 @@ const Main = (props) => {
           {isAuthorizationRequired ? (
             <a
               className="logo__link"
-              href={`#`}
+              href={`/login`}
               onClick={() => showSignInPage()}
             >Sign in</a>
           ) : (

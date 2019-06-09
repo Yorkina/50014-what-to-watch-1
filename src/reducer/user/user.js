@@ -15,10 +15,12 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status,
-  }),
+  requireAuthorization: (status) => {
+    return {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: status,
+    };
+  },
 
   login: (userData) => {
     return {

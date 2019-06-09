@@ -7,7 +7,11 @@ describe(`SignIn`, () => {
   it(`should render`, () => {
     const props = {
       login: jest.fn(),
-      hideSignInPage: jest.fn()
+      location: {
+        state: {
+          from: `/some-url`,
+        }
+      },
     };
     const signIn = renderer.create(<SignIn {...props} />).toJSON();
 

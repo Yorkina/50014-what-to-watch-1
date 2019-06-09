@@ -10,11 +10,14 @@ Enzyme.configure({adapter: new Adapter()});
 describe(`SignIn events works correctly`, () => {
   it(`change event work correctly on email input`, () => {
     const login = jest.fn();
-    const hideSignInPage = jest.fn();
 
     const props = {
       login,
-      hideSignInPage,
+      location: {
+        state: {
+          from: `/some-url`,
+        }
+      },
     };
 
     const signIn = mount(<SignIn {...props} />);
@@ -28,16 +31,23 @@ describe(`SignIn events works correctly`, () => {
 
     signIn.update();
 
-    expect(signIn.state()).toEqual({email: `email@mail.com`, password: ``});
+    expect(signIn.state()).toEqual({
+      email: `email@mail.com`,
+      password: ``,
+      shouldRedirectToPrevAddress: false,
+    });
   });
 
   it(`change event work correctly on password input`, () => {
     const login = jest.fn();
-    const hideSignInPage = jest.fn();
 
     const props = {
       login,
-      hideSignInPage,
+      location: {
+        state: {
+          from: `/some-url`,
+        }
+      },
     };
 
     const signIn = mount(<SignIn {...props} />);
@@ -51,18 +61,26 @@ describe(`SignIn events works correctly`, () => {
 
     signIn.update();
 
-    expect(signIn.state()).toEqual({email: ``, password: `password`});
+    expect(signIn.state()).toEqual({
+      email: ``,
+      password: `password`,
+      shouldRedirectToPrevAddress: false,
+    });
   });
 
   it(`submit event work correctly on form`, () => {
     const login = jest.fn();
-    const hideSignInPage = jest.fn();
     const eventPreventDefault = jest.fn();
 
     const props = {
       login,
-      hideSignInPage,
+      location: {
+        state: {
+          from: `/some-url`,
+        }
+      },
     };
+
     const signIn = mount(<SignIn {...props} />);
     const form = signIn.find(`form`);
 
@@ -78,7 +96,6 @@ describe(`SignIn events works correctly`, () => {
     expect(eventPreventDefault).toHaveBeenCalledTimes(1);
     expect(login).toHaveBeenCalledTimes(1);
     expect(login).toHaveBeenCalledWith(`email@mail.com`, `password`);
-    expect(hideSignInPage).toHaveBeenCalledTimes(1);
   });
 });
 

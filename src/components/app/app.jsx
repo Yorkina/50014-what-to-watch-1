@@ -1,29 +1,22 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {Switch, Route} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
-import {checkSignInVisibility} from '../../reducer/user/selectors';
 import SignIn from '../sign-in/sign-in.jsx';
+import {withProtectedRoute} from '../../hocs/with-protected-route/with-protected-route';
+import {Favorites} from '../favorites/favorites';
 
-export const App = (props) => {
-  const {isSignInPage} = props;
 
-  if (isSignInPage) {
-    return <SignIn />;
-  }
+const ProtectedRoute = withProtectedRoute(Route);
 
+export const App = () => {
   return (
-    <Main />
+    <Switch>
+      <Route path="/" exact component={Main}/>
+
+      <Route path="/login" component={SignIn}/>
+
+      <ProtectedRoute path={`/favorites`} component={Favorites} />
+    </Switch>
   );
 };
-
-App.propTypes = {
-  isSignInPage: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-  isSignInPage: checkSignInVisibility(state),
-});
-
-export default connect(mapStateToProps)(App);

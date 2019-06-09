@@ -155,7 +155,7 @@ Array [
       >
         <a
           className="logo__link"
-          href="#"
+          href="/login"
           onClick={[Function]}
         >
           Sign in

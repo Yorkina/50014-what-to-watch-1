@@ -11,13 +11,14 @@ const API_CONFIG = {
 
 const FORBIDDEN_STATUS = 403;
 
-export const createAPI = () => {
+export const createAPI = (pushLoginStateToHistory) => {
   const api = axios.create(API_CONFIG);
 
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error.response.status === FORBIDDEN_STATUS) {
-      dispatch(ActionCreator.requireAuthorization(true));
+      debugger
+      pushLoginStateToHistory();
     }
 
     return error;

@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-import {ActionCreator, Operation} from '../../reducer/user/user';
+import {Operation} from '../../reducer/user/user';
 
 
 export class SignIn extends PureComponent {
@@ -12,6 +13,7 @@ export class SignIn extends PureComponent {
     this.state = {
       email: ``,
       password: ``,
+      shouldRedirectToPrevAddress: false,
     };
 
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
@@ -30,14 +32,20 @@ export class SignIn extends PureComponent {
     evt.preventDefault();
 
     const {email, password} = this.state;
-    const {login, hideSignInPage} = this.props;
+    const {login} = this.props;
 
-    login(email, password);
-    hideSignInPage();
+    login(email, password).then(() => {
+      this.setState({shouldRedirectToPrevAddress: true});
+    });
   }
 
   render() {
-    const {email, password} = this.state;
+    const {email, password, shouldRedirectToPrevAddress} = this.state;
+    const {location} = this.props;
+
+    if (shouldRedirectToPrevAddress) {
+      return <Redirect push to={location.state ? location.state.from : `/`} />;
+    }
 
     return (
       <React.Fragment>
@@ -137,12 +145,15 @@ export class SignIn extends PureComponent {
 
 SignIn.propTypes = {
   login: PropTypes.func.isRequired,
-  hideSignInPage: PropTypes.func.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      from: PropTypes.string.isRequired,
+    }),
+  }),
 };
 
 const mapDispatchToProps = {
   login: Operation.login,
-  hideSignInPage: ActionCreator.hideSignInPage,
 };
 
 export default connect(null, mapDispatchToProps)(SignIn);
